@@ -1,19 +1,37 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { addServerImports, addTemplate, createResolver, defineNuxtModule, resolveFiles } from "@nuxt/kit";
 
-// Module options TypeScript interface definition
-export interface ModuleOptions {}
+export type ModuleOptions = Record<string, string | string[]>;
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'my-module',
-    configKey: 'myModule'
+    name: "@lewebsimple/nuxt-barrel",
+    configKey: "barrel",
   },
   // Default configuration options of the Nuxt module
   defaults: {},
-  setup (options, nuxt) {
-    const resolver = createResolver(import.meta.url)
+  async setup(options, nuxt) {
+    Object.entries(options).forEach(async ([key, globs]) => {
+      // Resolve files from globs
+      const files: string[] = [];
+      for await (const rootDir of nuxt.options._layers.map((layer) => layer.config.rootDir)) {
+        files.push(...(await resolveFiles(rootDir, globs)));
+      }
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve('./runtime/plugin'))
-  }
-})
+      // Add barrel files and server imports
+      addTemplate({
+        write: true,
+        filename: `barrel/${key}-index.ts`,
+        getContents: () => files.map((file) => `export * from "${file.replace(".ts", "")}";`).join("\n"),
+      });
+      addTemplate({
+        write: true,
+        filename: `barrel/${key}.ts`,
+        getContents: () => `export * as ${key} from "./${key}-index";`,
+      });
+
+      // Add server import
+      const { resolve } = createResolver(nuxt.options.buildDir);
+      addServerImports([{ from: resolve(`barrel/${key}.ts`), name: key }]);
+    });
+  },
+});

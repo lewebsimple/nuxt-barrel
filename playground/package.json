@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "my-module-playground",
+  "name": "@lewebsimple/nuxt-barrel-playground",
   "type": "module",
   "scripts": {
     "dev": "nuxi dev",

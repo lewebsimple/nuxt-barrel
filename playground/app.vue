@@ -1,8 +1,7 @@
-<template>
-  <div>
-    Nuxt module playground!
-  </div>
-</template>
-
-<script setup>
+<script setup lang="ts">
+const { data } = await useFetch("/api/barrel");
 </script>
+
+<template>
+  <pre>{{ data }}</pre>
+</template>
