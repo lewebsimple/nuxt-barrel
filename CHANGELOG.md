@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/lewebsimple/nuxt-barrel/compare/v0.0.2...v0.0.3)
+
+### 🚀 Enhancements
+
+- HMR of files in the glob pattern ([2153d1e](https://github.com/lewebsimple/nuxt-barrel/commit/2153d1e))
+
+### ❤️ Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.0.2
 
 
