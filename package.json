@@ -30,6 +30,7 @@
     "@lewebsimple/eslint-config": "^0.9.3",
     "@nuxt/kit": "^3.11.1",
     "husky": "^9.0.11",
+    "minimatch": "^9.0.3",
     "nano-staged": "^0.8.0"
   },
   "devDependencies": {

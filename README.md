@@ -13,6 +13,7 @@ Nuxt module for automatic barrel files.
 ## Features
 
 - ⛰ Named exports from a certain glob pattern become properties of an auto-imported object
+- 🔥 HMR of files in the glob pattern
 
 ## Quick Setup
 
