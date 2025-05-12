@@ -1,6 +1,6 @@
 {
   "name": "@lewebsimple/nuxt-barrel",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Nuxt module for automatic barrel files",
   "repository": "lewebsimple/nuxt-barrel",
   "license": "MIT",

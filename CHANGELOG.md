@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/lewebsimple/nuxt-barrel/compare/v0.0.3...v0.0.4)
+
+### 🩹 Fixes
+
+- Move eslint config to devDependencies ([2b902d5](https://github.com/lewebsimple/nuxt-barrel/commit/2b902d5))
+
+### ❤️ Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.0.3
 
 [compare changes](https://github.com/lewebsimple/nuxt-barrel/compare/v0.0.2...v0.0.3)
